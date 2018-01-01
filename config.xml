@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.snareapps.l2p" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>L2P</name>
+    <description>
+       L2P
+    </description>
+    <author email="snareapps@gmail.com" href="">
+        Snare Apps
+    </author>
+    <splash src="www/img/splash.jpg" />
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+    <icon src="www/img/icon.png" />
+    <access origin="*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <engine name="android" spec="~6.2.3" />
+</widget>

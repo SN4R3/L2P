@@ -1,0 +1,413 @@
+#page2 {
+    max-height: 100vh !important;
+}
+
+#page {
+    max-height: 100vh !important;
+}
+
+body {
+    max-height: 100vh !important;
+}
+
+.ui-content,
+#page,
+#page2,
+#page3,
+#page4,
+#page5,
+#page6,
+#page7,
+#page8,
+#page9,
+#page9-stats,
+#page-sess1,
+#page-sess2,
+#moreSess {
+    background-color: #E0F4F2 !important;
+}
+
+.footerBtns {
+    width: 100%;
+}
+
+div[data-role="footer"] button {
+    width: 48.5% !important;
+    margin-left: 0.4%;
+    background-color: #13B7C1 !important;
+    color: white !important;
+    border: 1px solid #E0F4F2 !important;
+    text-shadow: none !important;
+}
+
+
+/*back button*/
+
+.back-btn {
+    float: left;
+    margin-top: 3%;
+    margin-left: 2%;
+    border: none;
+    border-radius: 20px;
+}
+
+
+/*Start page components hiding for animation*/
+
+#startHrsContainer,
+#recPermitContainer,
+#proPlanContainer,
+#under21Container,
+#startBtn {
+    display: none;
+    height: 16vh;
+    margin-top: 5%;
+}
+
+.startTitle {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3vh;
+    display: none;
+}
+
+.largeTxtBox {
+    width: 100%;
+    height: 1vh;
+    font-size: 4vh;
+    text-align: right !important;
+}
+
+#page label {
+    font-size: 2.5vh;
+}
+
+.dateContainer {
+    position: relative;
+    width: 100%;
+}
+
+.dateContainer input {
+    padding-right: 20%;
+    width: 100%;
+}
+
+.dateContainer img {
+    position: absolute;
+    bottom: 12px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+#under21Container {
+    font-size: 2.5vh;
+}
+
+#startBtn {
+    font-size: 3.5vh;
+    height: 10vh !important;
+    width: 100% !important;
+    position: fixed;
+    bottom: 15px;
+    right: 1px;
+}
+
+
+/*End First Page*/
+
+
+/*Menu Screen(2nd Page)*/
+
+div[data-role="header"],
+div[data-role="footer"] {
+    color: white !important;
+    text-shadow: none !important;
+    background-color: #13B7C1 !important;
+    font-size: 1.2em;
+}
+
+div[data-role="footer"] {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.grid-contain-wrapper {
+    margin-top: 10%;
+}
+
+.grid-contain {
+    margin-bottom: 10%;
+    display: flex;
+    text-align: center;
+    color: white;
+    text-shadow: none !important;
+}
+
+.grid-contain h2 {
+    margin-top: 5%;
+}
+
+.grid-1,
+.grid-2 {
+    flex: 1;
+    padding: 5px;
+    border-radius: 10px;
+    height: 30vh;
+}
+
+.grid-1 {
+    margin-right: 2%;
+}
+
+.grid-2 {
+    margin-left: 2%;
+}
+
+.progBar {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+/*End MenuPage*/
+
+
+/*Start New Entry Pages */
+
+#page3 .largeTxtBox {
+    font-size: 3vh !important;
+}
+
+#page3 .dateContainer img {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+#page3 fieldset .ui-controlgroup-controls {
+    width: 100% !important;
+}
+
+#page3 fieldset .ui-controlgroup-controls .ui-select {
+    width: 33% !important;
+}
+
+#page3 fieldset .ui-controlgroup-controls .ui-select div {
+    background-color: #13B7C1 !important;
+    text-shadow: none !important;
+}
+
+.btnGrpRad button {
+    text-shadow: none !important;
+}
+
+.btnGrpRadSelected {
+    color: white !important;
+    background-color: #13B7C1 !important;
+}
+
+#manSessTraffic .btnGrpRad button,
+#manSessLight .btnGrpRad button {
+    font-size: 0.7em !important;
+}
+
+#select-manSessRoad-button,
+#select-manSessSuper-button {
+    color: white !important;
+    background-color: #13B7C1 !important;
+    text-shadow: none !important;
+}
+
+.sessionInfoContainer {
+    margin-top: 25%;
+}
+
+
+/*End New Entry Pages*/
+
+
+/*Supervisor Page*/
+
+.styledTable {
+    border: 1px solid black;
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    font-size:0.8em;
+}
+
+.styledTable td,
+.styledTable th {
+    border: 1px solid black;
+}
+
+
+/*End supervisor page*/
+
+
+/*Stats page*/
+
+div#tHoursGauge .fg-dial-label {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 220px;
+    width: 100%;
+}
+
+div#tHoursGauge .fg-dial {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 150px;
+    width: 100%;
+}
+
+div#tHoursNigGauge .fg-dial-label {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 420px;
+    width: 100%;
+}
+
+div#tHoursNigGauge .fg-dial {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 350px;
+    width: 100%;
+}
+
+div#tKmGauge .fg-dial-label {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 620px;
+    width: 100%;
+}
+
+div#tKmGauge .fg-dial {
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 550px;
+    width: 100%;
+}
+
+canvas {
+    -webkit-box-shadow: 0 0 3px 5px #f5f5f5;
+    -moz-box-shadow: 0 0 3px 5px #f5f5f5;
+    box-shadow: 0 0 3px 5px #f5f5f5;
+    border: none !important;
+    padding: 0;
+    margin: auto;
+    margin-right: 16%;
+    display: block;
+}
+
+#page9 p {
+    text-align: center;
+}
+
+
+/*portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+
+@media (min-width:600px) {
+    /*Btns*/
+    .back-btn {
+        float: left;
+        margin-top: 1.5%;
+        margin-left: 2%;
+        border: none;
+        border-radius: 20px;
+    }
+    div[data-role="footer"] button {
+        font-size: 0.8em !important;
+        width: 48.5% !important;
+        margin-left: 0.4%;
+        background-color: #13B7C1 !important;
+        color: white !important;
+        border: 1px solid #E0F4F2 !important;
+        text-shadow: none !important;
+    }
+    /*End Btns*/
+    /*Main Menu*/
+    div[data-role="header"],
+    div[data-role="footer"] {
+        height: 10vh;
+        font-size: 3em;
+    }
+    .grid-contain h2 {
+        margin-top: 5%;
+        font-size: 2em;
+    }
+    .grid-contain img {
+        width: 70%;
+    }
+    /*End Main Menu*/
+    /*New Entry*/
+    #page3 label {
+        font-size: 1.5em;
+    }
+    #page3 h3 {
+        margin-top: 3% !important;
+        font-size: 2em;
+    }
+    #page3 fieldset {
+        width: 49%;
+        display: inline;
+    }
+    #page3 .largeTxtBox {
+        font-size: 2.5vh !important;
+        padding: 50px;
+    }
+    #page3 .dateContainer img {
+        position: absolute;
+        bottom: 20px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
+    }
+    #page3 fieldset .ui-controlgroup-controls {
+        width: 100% !important;
+    }
+    #page3 fieldset .ui-controlgroup-controls .ui-select {
+        width: 33% !important;
+    }
+    #page3 fieldset .ui-controlgroup-controls .ui-select div {
+        background-color: #13B7C1 !important;
+        text-shadow: none !important;
+    }
+    .btnGrpRad button {
+        text-shadow: none !important;
+    }
+    .btnGrpRadSelected {
+        color: white !important;
+        background-color: #13B7C1 !important;
+    }
+    #manSessTraffic .btnGrpRad button,
+    #manSessLight .btnGrpRad button {
+        font-size: 0.7em !important;
+    }
+    #select-manSessRoad-button,
+    #select-manSessSuper-button {
+        color: white !important;
+        background-color: #13B7C1 !important;
+        text-shadow: none !important;
+    }
+    .sessionInfoContainer {
+        margin-top: 25%;
+    }
+    /*End New Entry*/
+}

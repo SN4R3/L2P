@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="height=device-height, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/datedropper.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.lineProgressbar.css">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/jquery.signature.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="jQuery/jquery-1.8.2.min.js"></script>
+    <script src="jQuery/jquery.mobile-1.4.5.min.js"></script>
+    <script src="jQuery/jquery.lineProgressbar.js"></script>
+    <script src="jQuery/jquery-1.9.0-ui.js"></script>
+    <script src="jQuery/jquery.signature.js"></script>
+    <script src="jQuery/jquery.ui.touch-punch.min.js"></script>
+    <script src="jQuery/FlexGauge.js"></script>
+    <script src="js/datedropper.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/validate.js"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <div data-role="page" id="page" data-theme="a">
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h2 class='startTitle'>Lets get up to speed.</h2>
+            <div id="startHrsContainer">
+                <label for='numStartHours'>How many hours have you practiced driving so far?</label>
+                <input type="number" name='numStartHours' id='numStartHours' class='largeTxtBox' value="0" />
+            </div>
+            <div id="recPermitContainer">
+                <div class="dateContainer">
+                    <label for='dateRecPermit'>When did you recieve your learners permit?</label>
+                    <input type="text" name="dateRecPermit" id="dateRecPermit" value="" class="largeTxtBox datepicker" data-default-date="01-08-2017" data-large-mode="true" />
+                    <img src="img/calander.png">
+                </div>
+            </div>
+            <div id="proPlanContainer">
+                <div class="dateContainer">
+                    <label for='dateProPlan'>When do you plan on getting your probationary license?</label>
+                    <input type="text" name="dateProPlan" id="dateProPlan" value="" class="largeTxtBox datepicker" data-default-date="01-08-2017" data-large-mode="true" />
+                    <img src="img/calander.png">
+                </div>
+            </div>
+            <div id="under21Container">
+                <h3 align="center">Are you under 21?</h3>
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td><button id='u21' class="btnGrpRadSelected">Yes</button></td>
+                        <td><button>No</button></td>
+                    </table>
+                </div>
+            </div>
+            <p id="err" style="color:red"></p>
+            <button id="startBtn">Lets Start.</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page2">
+        <div data-role="header">
+            <img src="img/settings.png" width="10%" style="float:right; margin-top:3%; margin-right:2%;" id="settingsBtn" />
+            <h1>My Logbook</h1>
+        </div>
+        <div data-role="popup" id="popup-entrySaved" class="ui-content" data-theme="a">
+            <p>Entry Saved</p>
+        </div>
+        <div data-role="main" class="ui-content">
+            <div class="grid-contain-wrapper">
+                <div class="grid-contain">
+                    <div class="grid-1" style="background-color:#B8448B">
+                        <img src="img/newentry.png" width="100%" />
+                        <h2>New Entry</h2>
+                    </div>
+                    <div class="grid-2" style="background-color:#4E3380">
+                        <img src="img/session.png" width="100%" />
+                        <h2>Session</h2>
+                    </div>
+                </div>
+                <div class="grid-contain">
+                    <div class="grid-1" style="background-color:#48BA89">
+                        <img src="img/supervisor.png" width="100%" />
+                        <h2>Supervisor</h2>
+                    </div>
+                    <div class="grid-2" style="background-color:#FBA51E">
+                        <img src="img/stats.png" width="100%" />
+                        <h2>Statistics</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div class="progBar"></div>
+        </div>
+    </div>
+
+    <div data-role="page" id="page3">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>New Entry</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center" style="margin-top:-2%;">Add an Entry Manually</h3>
+            <div class="dateContainer">
+                <label for='dateManSess'>Date of Session</label>
+                <input type="text" name="dateManSess" id="dateManSess" value="" class="largeTxtBox datepicker" data-default-date="01-08-2017" data-large-mode="true" />
+                <img src="img/calander.png">
+            </div>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <legend>Start Time:</legend>
+                <select name="select-hrManTime-start" id="select-hrManTime-start">
+                </select>
+                <select name="select-minManTime-start" id="select-minManTime-start">
+                </select>
+                <select name="select-pmamManTime-start" id="select-pmamManTime-start">
+                    <option value="am">AM</option>
+                    <option value="pm">PM</option>
+                </select>
+            </fieldset>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <legend>End Time:</legend>
+                <select name="select-hrManTime-end" id="select-hrManTime-end">
+                </select>
+                <select name="select-minManTime-end" id="select-minManTime-end">
+                </select>
+                <select name="select-pmamManTime-end" id="select-pmamManTime-end">
+                    <option value="am">AM</option>
+                    <option value="pm">PM</option>
+                </select>
+            </fieldset>
+            <input type="number" name='numManNightMins' id='numManNightMins' class='largeTxtBox' placeholder="Night Driving in Minutes" />
+            <hr>
+            <input type="number" name='numManOdoStart' id='numManOdoStart' class='largeTxtBox' placeholder="Odometer Start" />
+            <input type="number" name='numManOdoEnd' id='numManOdoEnd' class='largeTxtBox' placeholder="Odometer End" />
+            <hr>
+            <input type="text" name='txtManRego' id='txtManRego' class='largeTxtBox' placeholder="Car Rego Number" />
+            <br/>
+            <p id="errMsg" style="color:red"></p>
+        </div>
+        <div data-role="footer">
+            <button class='back-menu'>Cancel</button>
+            <button id="next-page3">Next</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page4">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-page3" />
+            <h1>New Entry</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center" style="margin-top:-2%;">Add an Entry Manually</h3>
+            <div id="manSessParking">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Parking</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected">Yes</button></td>
+                        <td><button id='manParking'>No</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="manSessWeather">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Weather</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected" id='manDry'>Dry</button></td>
+                        <td><button>Wet</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="manSessLight">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Light</h3>
+                        </td>
+                        <td><button id='manDay'>Day</button></td>
+                        <td><button class="btnGrpRadSelected">Dawn/Dusk</button></td>
+                        <td><button id='manNight'>Night</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="manSessTraffic">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Traffic</h3>
+                        </td>
+                        <td><button id='manLight' class="btnGrpRadSelected">Light</button></td>
+                        <td><button id='manMod'>Moderate</button></td>
+                        <td><button id='manHeavy'>Heavy</button></td>
+                    </table>
+                </div>
+            </div>
+            <label for="select-manSessRoad">Road Type:</label>
+            <select name="select-manSessRoad" id="select-manSessRoad" multiple="multiple" data-native-menu="false" data-mini='true'>
+                <option value="local" selected='selected'>Local St</option>
+                <option value="main">Main Rd</option>
+                <option value="innerCity">Inner City</option>
+                <option value="freeway">Freeway</option>
+                <option value="ruralHwy">Rural Hwy</option>
+                <option value="ruralOther">Rural/Other</option>
+                <option value="gravel">Gravel</option>
+            </select>
+            <hr/>
+            <label for="select-manSessSuper">Supervisor:</label>
+            <select name="select-manSessSuper" id="select-manSessSuper" data-mini="true">
+                <option value="4"><button>Add New</button></option>
+            </select>
+        </div>
+        <div data-role="footer">
+            <button>Cancel</button>
+            <button id="next-page4">Next</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page5">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-page3" />
+            <h1>New Entry</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <h3 align="center" style="margin-top:-2%;">Add an Entry Manually</h3>
+            <div class="sessionInfoContainer">
+                <p>On the <strong><span class='sessDate'></span></strong>, you drove from
+                    <strong><span class='sessStartTime'></span></strong> to <strong><span class='sessEndTime'></span></strong>
+                    <strong>(<span class='sessTotalTime'></span>mins),</strong> of which <strong><span class='sessTimeNight'></span> mins</strong> was at night. You drove around <strong><span class='sessDist'></span>km.</strong></p>
+
+                <p>You <strong><span class="sessParking"></span></strong> practice parking, drove in <strong><span class="sessTraffic"></span></strong> traffic on a <strong><span class="sessWeather"></span></strong> road which consisted of <strong><span class="sessRoadTypes"></span></strong>
+                    <span>during </span><strong><span class="sessLight"></span>.</strong></p>
+
+                <p>The Car Rego No was <strong><span class="sessCarRego"></span></strong> and the supervisor's name was <strong><span class="sessSuper"></span>.</strong></p>
+            </div>
+        </div>
+        <div data-role="footer">
+            <button>Cancel</button>
+            <button id='addEntry'>Confirm</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page6">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Supervisor</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center">All Supervisors</h3>
+            <table class="styledTable" id="allSupervisors">
+            </table>
+        </div>
+        <div data-role="footer">
+            <button class="add-sup">Add Supervisor</button>
+            <button class="back-menu">Back</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page7">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Add Supervisor</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <input type="hidden" name='supId' id='supId' value='false' />
+            <label for="txtSupName">Name:</label>
+            <input type="text" name='txtSupName' id='txtSupName' class='' />
+            <label for="numSupPh">Phone:</label>
+            <input type="number" name='numSupPh' id='numSupPh' class='' />
+            <label for="numSupNo">License/Instructor No:</label>
+            <input type="number" name='numSupNo' id='numSupNo' class='' />
+            <div class="dateContainer">
+                <label for='dateLicEx'>License Expiry</label>
+                <input type="text" name="dateLicEx" id="dateLicEx" value="" class="largeTxtBox datepicker" data-max-year="2040" data-large-mode="true" />
+                <img src="img/calander.png">
+            </div>
+            <label for="sig">Signature</label>
+            <div id="sig" name="sig"></div>
+            <p id="succSup" style="color:red"></p>
+            <p id="errSup" style="color:red"></p>
+        </div>
+        <div data-role="footer">
+            <button class="back-menu">Cancel</button>
+            <button class="validate-sup">Add Supervisor</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page8">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Settings</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center">Default Settings</h3>
+            <div id="autoSessWeather">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Weather</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected">Auto</button></td>
+                        <td><button>Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="autoSessDay">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Day Setting</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected">Auto</button></td>
+                        <td><button>Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="autoSessOdo">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Odometer Setting</h3>
+                        </td>
+                        <td><button>Auto</button></td>
+                        <td><button class="btnGrpRadSelected">Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <h3 align="center">Change Details</h3>
+            <label for="numTotalHrs">Starting Hours:</label>
+            <input type="number" name='numTotalHrs' id='numTotalHrs' />
+        </div>
+        <div id="recPermitContainer" style="display:block">
+            <div class="dateContainer">
+                <label for='dateRecPermit'>When did you recieve your learners permit?</label>
+                <input type="text" name="dateRecPermit" value="" id='dateRecPermit' class="largeTxtBox datepicker" data-default-date="01-08-2017" data-large-mode="true" />
+                <img src="img/calander.png">
+            </div>
+        </div>
+        <div id="under21Container" style="display:block">
+            <h3 align="center">Are you under 21?</h3>
+            <div data-role="navbar" class="btnGrpRad">
+                <table class="center" width="100%">
+                    <td><button id='isu21'>Yes</button></td>
+                    <td><button id='notU21'>No</button></td>
+                </table>
+            </div>
+        </div>
+        <br/><br/><br/><br/><br/><br/>
+        <div data-role="footer">
+            <button class="back-menu">Back</button>
+            <button class="save-settings">Save</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page9">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Statistics</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <div id="gaugewrap">
+                <div id="tHoursGauge"></div>
+                <div id="tHoursNigGauge"></div>
+                <div id="tKmGauge"></div>
+            </div>
+            <br/><br/><br/><br/><br/>
+        </div>
+        <div data-role="footer">
+            <button class="back-menu">Back</button>
+            <button class="page9-stats">All Stats</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="moreSess">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Supervisor</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center">All Details</h3>
+            <table class="styledTable" id="allSessInfo">
+            </table>
+        </div>
+        <div data-role="footer">
+            <button class="back-menu">back</button>
+            <button class='deleteSess'>Delete</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page9-stats">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>Statistics</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h2 align='center'>All Sessions</h2>
+            <table class="styledTable " id="allStats">
+            </table>
+        </div>
+        <div data-role="footer">
+            <button class="page9">Back</button>
+            <button class="back-menu">Main Menu</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page-sess1">
+        <div data-role="header">
+            <img src="img/btn-back.png" width="10%" class="back-btn back-menu" />
+            <h1>New Session</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center" style="margin-top:-2%;">Manual/Auto Settings</h3>
+            <div id="autoSessWeather">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Weather</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected">Auto</button></td>
+                        <td><button>Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="autoSessDay">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Day Setting</h3>
+                        </td>
+                        <td><button class="btnGrpRadSelected">Auto</button></td>
+                        <td><button>Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="autoSessOdo">
+                <div data-role="navbar" class="btnGrpRad">
+                    <table class="center" width="100%">
+                        <td>
+                            <h3>Odometer Setting</h3>
+                        </td>
+                        <td><button>Auto</button></td>
+                        <td><button class="btnGrpRadSelected">Manual</button></td>
+                    </table>
+                </div>
+            </div>
+            <div id="autoSessOdoDiv">
+                <label for="txtAutoSessOdoStart">Odometer Start:</label>
+                <input type="number" name="txtAutoSessOdoStart" id="txtAutoSessOdoStart" placeholder="KM">
+            </div>
+        </div>
+        <div id="autoSessTraff">
+            <div data-role="navbar" class="btnGrpRad">
+                <table class="center" width="100%">
+                    <td>
+                        <h3>Traffic</h3>
+                    </td>
+                    <td><button class="btnGrpRadSelected">Auto</button></td>
+                    <td><button>Manual</button></td>
+                </table>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <button onclick="startSess()">Start Session</button>
+    </div>
+    </div>
+
+    <div data-role="page" id="page-sess2">
+        <div data-role="header">
+            <!-- <img src="img/btn-back.png" width="10%" class="back-btn back-page2" /> -->
+            <h1>This Session</h1>
+        </div>
+        <!--<div data-role="content">-->
+        <div data-role="main" class="ui-content">
+            <h3 align="center" style="margin-top:-2%;">Current Session</h3>
+            <div data-role="navbar" class="btnGrpRad">
+                <table class="center" width="100%">
+                    <td>
+                        <h3 style="font-weight: normal;">Time Elapsed:</h3>
+                    </td>
+                    <td>
+                        <h3 class="currSess-time">00:11:34</h3>
+                    </td>
+                </table>
+                <table class="center" width="100%">
+                    <td>
+                        <h3 style="font-weight: normal;">Night Time:</h3>
+                    </td>
+                    <td>
+                        <h3 class="currSess-ntime">00:00:00</h3>
+                    </td>
+                </table>
+                <table class="center" width="100%">
+                    <td>
+                        <h3 style="font-weight: normal;">Road Condition:</h3>
+                    </td>
+                    <td>
+                        <h3 class="currSess-road">Dry</h3>
+                    </td>
+                    <td>
+                        <select name="select-currSess-road" id="select-currSess-road" multiple="multiple" data-native-menu="false" data-mini='true'>
+                            <option value="auto" selected="selected">Auto</option>
+                            <option value="dry">Dry</option>
+                            <option value="wet">Wet</option>
+                        </select>
+                    </td>
+                </table>
+                <table class="center" width="100%">
+                    <td>
+                        <h3 style="font-weight: normal;">KM Traveled:</h3>
+                    </td>
+                    <td>
+                        <h3 class="currSess-dist">4.56</h3>
+                    </td>
+                </table>
+                <table class="center" width="100%">
+                    <td>
+                        <h3 style="font-weight: normal;">Traffic:</h3>
+                        </select>
+                    </td>
+                    <td>
+                        <h3 class="currSess-light">Light</h3>
+                    </td>
+                    <td>
+                        <select name="select-currSess-light" id="select-currSess-light" multiple="multiple" data-native-menu="false" data-mini='true'>
+                            <option value="auto" selected="selected">Auto</option>
+                            <option value="light">Light</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="heavy">Heavy</option>
+                        </select>
+                    </td>
+                </table>
+            </div>
+            <div class="currSess-hidden" style="display:none">
+                <div id="manSessParking">
+                    <div data-role="navbar" class="btnGrpRad">
+                        <table class="center" width="100%">
+                            <td>
+                                <h3 style="font-weight: normal;">Parking</h3>
+                            </td>
+                            <td><button class="btnGrpRadSelected">Yes</button></td>
+                            <td><button>No</button></td>
+                        </table>
+                    </div>
+                </div>
+                <label for="select-manSessRoad"><h3 style="font-weight: normal;">Road Type:</h3></label>
+                <select name="select-manSessRoad" id="select-manSessRoad" multiple="multiple" data-native-menu="false" data-mini='true'>
+                    <option value="local">Background Color</option>
+                    <option value="local">Wont change</option>
+                    <option value="local">Here?!?</option>
+                    <option value="local">Local St</option>
+                    <option value="main">Main Rd</option>
+                    <option value="innerCity">Inner City</option>
+                    <option value="freeway">Freeway</option>
+                    <option value="ruralHwy">Rural Hwy</option>
+                    <option value="ruralOther">Rural/Other</option>
+                    <option value="gravel">Gravel</option>
+                </select>
+                <input type="text" name='txtManRego' id='txtManRego' placeholder="Car Rego Number" />
+
+                <label for="select-manSessSuper"><h3 style="font-weight: normal;">Supervisor:</h3></label>
+                <select name="select-manSessSuper" id="select-manSessSuper" data-mini="true">
+                    <option value="1">John Bluebaker</option>
+                    <option value="2">Jeff Heizen</option>
+                    <option value="3">Josh Green</option>
+                    <option value="4"><button>Add New</button></option>
+                </select>
+                <button id="currSess-save">Save Session</button>
+                <button>Cancel</button>
+            </div>
+            <br/>
+            <br/>
+            <div class="currSess-btns">
+                <button id="currSess-end">End Session</button>
+                <br/>
+                <button>Cancel Session</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
