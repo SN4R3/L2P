@@ -15,8 +15,8 @@ This app gives learner drivers/supervisors an easier time logging driving sessio
 ## Functionalities
 
 Application aimed at becoming a handy alternative to learner log books, coupled with relevant features to enhance the experience for the user/learner or supervisor.
-⋅⋅*	Single page “form” used for inputting driving session entries.
-⋅⋅*	Each feature as per the type of learner they are. Questionnaire to be filled out by user at first use of app. (Settings can be changed at any time, but its required to fill out before app can be used)
-⋅⋅*	Each driving session’s entry will be completed after supervisor signs it. A plugin will be used to give the ability to sign with the user’s handwriting
-⋅⋅*	Visually appealing views of driver’s statistics.
-⋅⋅*	User-friendly navigation
+*	Single page “form” used for inputting driving session entries.
+*	Each feature as per the type of learner they are. Questionnaire to be filled out by user at first use of app. (Settings can be changed at any time, but its required to fill out before app can be used)
+*	Each driving session’s entry will be completed after supervisor signs it. A plugin will be used to give the ability to sign with the user’s handwriting
+*	Visually appealing views of driver’s statistics.
+*	User-friendly navigation
